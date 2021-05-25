@@ -1,0 +1,60 @@
+@model List<Producto>
+
+
+<h1>Lista de pueblos</h1>
+
+<table class="table border">
+    <tr>
+        <th>Id</th>
+        <th>NomProducto</th>
+        <th>Foto</th>
+        <th>Descripcion</th>
+         <th>Categoria</th>
+        <th>Precio</th>
+         <th>Nombre</th>
+        <th>Celular</th>
+       
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.NomProducto</td>
+            <td>
+                @item.Foto
+            </td>
+             <td>
+                @item.Descripcion
+            </td>
+             <td>
+                @item.Categoria.Nombre
+            </td>
+            <td>
+                @item.Precio
+            </td>
+            <td>
+                @item.Nombre
+            </td>
+            <td>
+                @item.Celular
+            </td>
+            
+
+            <td>
+               
+
+                <form action="/busco/borrarproducto" method="post" class="d-inline-block">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <button class="btn btn-danger">Borrar</button>
+                </form>
+            </td>
+        </tr>
+    }
+    @if (Model.Count == 0) {
+        <tr>
+            <td colspan="4" class="text-center">No se encontraron productos</td>
+        </tr>
+    }
+</table>
+
+<a href="/busco/nuevoproducto" class="btn btn-primary">Añadir producto</a>
