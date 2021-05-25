@@ -12,13 +12,13 @@ namespace PC3.Controllers
             _context = context;
         }
         public IActionResult Categoria() {
-            var regiones = _context.Categorias.Include(x => x.Productos).OrderBy(r => r.Nombre).ToList();
-            return View(regiones);
+            var categorias = _context.Categorias.Include(x => x.Productos).OrderBy(r => r.Nombre).ToList();
+            return View(categorias);
         }
 
-        public IActionResult Producto() {
-            var pueblos = _context.Productos.Include(x => x.Categoria).OrderBy(r => r.Nombre).ToList();
-            return View(pueblos);
+        public IActionResult Productos() {
+            var productos = _context.Productos.Include(x => x.Categoria).OrderBy(r => r.Nombre).ToList();
+            return View(productos);
         }
 
 
